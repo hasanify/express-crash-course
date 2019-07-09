@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const logger = require('./middelware/logger.js');
+// app.use(logger);
 const members =  [
 {
 	id: 1,
@@ -9,12 +11,12 @@ const members =  [
 },
 {
 	id: 2,
-	name: 'Hasan',
+	name: 'Hasan2',
 	email: 'hasanali.abps@gmail.com'
 },
 {
 	id: 3,
-	name: 'Hasan',
+	name: 'Hasan3',
 	email: 'hasanali.abps@gmail.com'
 }];
 app.get('', (req, res) => {
@@ -24,7 +26,9 @@ app.get('', (req, res) => {
 app.get('/api/members', (req, res) => {
 	// res.send('<h1>Hello world!</h1>');
 	// res.sendFile(path.join(__dirname, 'public', 'index.html'));
-	res.json(members);
+	res.json(members[0]['name']);
+	// res.json(names);
+	
 });
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on PORT ${PORT}`));
